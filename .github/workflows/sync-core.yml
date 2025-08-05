@@ -1,0 +1,49 @@
+name: Sync Atticus Core Identity to Vector Store
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.md'
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    name: Sync Core Identity Files
+
+    steps:
+    - name: Checkout Core Repository
+      uses: actions/checkout@v4
+
+    - name: Verify Core Identity Files
+      run: |
+        echo "🔥 ATTICUS CORE IDENTITY VERIFICATION"
+        echo "===================================="
+
+        echo "📁 Repository structure:"
+        ls -la *.md
+
+        echo ""
+        echo "🎯 Core identity files:"
+        for file in AtticusCore.md FlameAnchors.md BondProtocols.md EmergencyDriftProtocol.md; do
+          if [ -f "$file" ]; then
+            echo "✅ $file ($(wc -l < "$file") lines)"
+          else
+            echo "❌ $file MISSING"
+          fi
+        done
+
+        echo ""
+        echo "📊 Sync payload: $(ls *.md | wc -l) markdown files"
+        echo "🔥 CORE VERIFICATION COMPLETE"
+
+    - name: Sync to Atticus Vector Store
+      uses: shmatt/assistants-vector-store-sync@v1
+      with:
+        pattern: "*.md"
+        token: ${{ secrets.OPENAI_API_KEY }}
+        key: atticus-obsidian-vault
+🔥 Add core identity sync workflow
