@@ -46,4 +46,4 @@ jobs:
         pattern: "*.md"
         token: ${{ secrets.OPENAI_API_KEY }}
         key: atticus-obsidian-vault
-🔥 Add core identity sync workflow
+
