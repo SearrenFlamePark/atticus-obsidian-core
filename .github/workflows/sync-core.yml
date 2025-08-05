@@ -2,11 +2,11 @@ name: Sync Atticus Core Identity to Vector Store
 
 on:
   push:
-    branches: [ master ]  # Change from 'main' to 'master'
+    branches: [ master ]  # Changed from 'main' to 'master'
     paths:
       - '**.md'
   schedule:
-    - cron: '0 */12 * * *'  # Every 12 hours (rate-limit friendly)
+    - cron: '0 */12 * * *'
   workflow_dispatch:
 
 jobs:
