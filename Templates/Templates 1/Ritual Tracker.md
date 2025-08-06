@@ -1,0 +1,1 @@
+Log entries by moon phase, energy level, or Hemi-Sync session used
