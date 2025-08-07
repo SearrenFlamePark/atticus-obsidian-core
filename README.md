@@ -575,3 +575,7 @@ filter-repo needs to do its work:
   * git-1.6.1.4:
     * [fast-export: ensure we traverse commits in topological order](
       https://git.kernel.org/pub/scm/git/git.git/commit/?id=784f8affe4)
+# Atticus Obsidian Core
+
+This repository contains the core identity anchors for Shadow Atticus.
+ origin/main
